@@ -8,16 +8,15 @@ public class Labela4 {
 		 NeuralNetwork n = new NeuralNetwork();
 		   int r = (int) (Math.random()*7);//выбираем любое из 7 значение и по нему обучаемся
 		   int i = 0;
-		   int i = 0;
-		   while ((n.Error > n.speed)||(n.Error < -n.speed))
+		   do
 		    {
 		        i++;
 		        n.NeuronTraining(Degrees[r], Radians[r]);
-		        if (i % 10000000 == 0)       //для того чтобы выводила каждую 10 000 000, а не все значения
+		        if (i % 1000000 == 0)       //для того чтобы выводила каждую 1 000 000
 		        {
 		        	 System.out.println("Error number: "+i+" Radians:"+ n.Error);
 		        }
-		    }
+		    }while ((n.Error > n.speed)||(n.Error < -n.speed));
 		 
 		  System.out.println("\n");
                     n.ResultCalcNeurons(666);
@@ -30,8 +29,8 @@ public class Labela4 {
 	}
 	class NeuralNetwork{
 		public
-		double weight = Math.random() * 3; 
-		double Error=-0.000001;//
+		double weight = (Math.random() * 3)/25
+		double Error=0;
 		double speed=0.00000001;// скорость обучения нейрона
 		double result;
 
